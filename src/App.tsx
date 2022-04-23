@@ -24,7 +24,7 @@ function App() {
         Math.random(),
         Math.random()
       ]);
-      setTimeout(pulse, 5000);
+      setTimeout(pulse, 10000);
     }
     pulse();
     const debouncedResize = debounce(resize, 200);
@@ -44,17 +44,18 @@ function App() {
   );
   const tile2 = (
     <div className='tile borderless'>
-      <h3>I'm fluent in TypeScript, Python, WebGL, React, Node.js, AWS, Docker, SQL, and NoSQL. I'm passionate about computational geometry and great UX.</h3>
+      <h3>I'm fluent in TypeScript, Python, WebGL, React, Node.js, AWS, Docker, SQL, and NoSQL. I'm passionate about realtime spatial problems and great UX.</h3>
     </div>
   );
   const tile3 = (
     <div className='tile borderless'>
       <h3>Employment</h3>
       <ul>
-        <li>Searching for primary role</li>
-        <li>Founder at Goodapuss LLC</li>
+        <li>2019 - 2022: Better ( IC )</li>
+        <li>2016 - 2019: Social Tables ( IC / EM )</li>
+        <li>Found Goodapuss LLC in 2021</li>
       </ul>
-      <h3>Additional Projects</h3>
+      <h3>Open Source Projects</h3>
       <ul>
         <li><a href='https://github.com/socialtables/openfpc' target='_blank'>OpenFPC</a></li>
         <li><a href='https://github.com/socialtables/saml-protocol' target='_blank'>SAML-Protocol</a></li>
@@ -71,14 +72,14 @@ function App() {
         <div className='row'>
           <a className='tile big resume' href="Robert%20Brownstein%20Resume.pdf" target='_blank'>
             <img src={resumeThumbnail} />
-            <span className='label'>resume</span>
+            <span className='label'>open resume</span>
           </a>
           <a className='tile big' href='https://brownstein.github.io/open-sourcerer-ts' target='_blank'>
             <img src={osThumbnail} />
             <div className='description'>
-              Open Sourcerer is a 2D platformer where the user learns JavaScript to defeat enemies and solve puzzles. Fully source-mapped and browser-first, it serves as a perfect demo of my frontend skillset.
+              Open Sourcerer is a 2D platformer in which the player learns JavaScript to defeat enemies and solve puzzles. Fully source-mapped, it serves as a perfect demo of my frontend skillset. Designed for desktop browsers.
             </div>
-            <span className='label'>side project</span>
+            <span className='label'>play side project</span>
           </a>
         </div>
         { mobile ? null : <div className='row'>{tile1}{tile2}{tile3}</div> }

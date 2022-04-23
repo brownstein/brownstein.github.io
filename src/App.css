@@ -105,6 +105,7 @@ h1 {
 
 a.tile, a.tile:visited {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .tile:last-child {
