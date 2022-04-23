@@ -53,7 +53,7 @@ function App() {
       <ul>
         <li>2019 - 2022: Better ( IC )</li>
         <li>2016 - 2019: Social Tables ( IC / EM )</li>
-        <li>Found Goodapuss LLC in 2021</li>
+        <li>Founded Goodapuss LLC in 2021</li>
       </ul>
       <h3>Open Source Projects</h3>
       <ul>
