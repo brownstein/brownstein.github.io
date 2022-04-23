@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "https://brownstein.github.io/static/css/main.608a72bb.css",
-    "main.js": "https://brownstein.github.io/static/js/main.80de7f8e.js",
+    "main.js": "https://brownstein.github.io/static/js/main.9b0c3eab.js",
     "static/js/787.829ff25b.chunk.js": "https://brownstein.github.io/static/js/787.829ff25b.chunk.js",
     "static/media/open-sourcerer.png": "https://brownstein.github.io/static/media/open-sourcerer.319a9cc641038b6627cc.png",
     "static/media/resume-thumbnail.png": "https://brownstein.github.io/static/media/resume-thumbnail.5a6e77e232863ee1ba7d.png",
     "index.html": "https://brownstein.github.io/index.html",
     "main.608a72bb.css.map": "https://brownstein.github.io/static/css/main.608a72bb.css.map",
-    "main.80de7f8e.js.map": "https://brownstein.github.io/static/js/main.80de7f8e.js.map",
+    "main.9b0c3eab.js.map": "https://brownstein.github.io/static/js/main.9b0c3eab.js.map",
     "787.829ff25b.chunk.js.map": "https://brownstein.github.io/static/js/787.829ff25b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.608a72bb.css",
-    "static/js/main.80de7f8e.js"
+    "static/js/main.9b0c3eab.js"
   ]
 }
