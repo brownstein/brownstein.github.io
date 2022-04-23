@@ -113,11 +113,9 @@ a.tile, a.tile:visited {
 }
 
 @media(max-width: 900px) {
-  .app {
-    max-height: 100vh;
-  }
   .content-box {
     box-sizing: border-box;
+    margin-bottom: 100px;
   }
   .row {
     display: block;
