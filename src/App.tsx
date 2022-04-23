@@ -34,7 +34,7 @@ function App() {
       window.removeEventListener('resize', debouncedResize);
     };
   }, [setBgColor]);
-  const colorTheme = (bgColor.reduce((acc, v) => (acc + v), 0) > 1.4)
+  const colorTheme = (bgColor[0] + bgColor[1] * 2 + bgColor[2] * 0.5 > 1.5)
     ? 'light'
     : 'dark';
   const tile1 = (
@@ -49,8 +49,11 @@ function App() {
   );
   const tile3 = (
     <div className='tile borderless'>
-      <h3>Current Employer</h3>
-      <p>Pending</p>
+      <h3>Employment</h3>
+      <ul>
+        <li>Searching for primary role</li>
+        <li>Founder at Goodapuss LLC</li>
+      </ul>
       <h3>Additional Projects</h3>
       <ul>
         <li><a href='https://github.com/socialtables/openfpc' target='_blank'>OpenFPC</a></li>
