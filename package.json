@@ -140,5 +140,11 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@types/debounce": "^1.2.1",
+    "@types/delaunator": "^5.0.0",
+    "debounce": "^1.2.1",
+    "delaunator": "^5.0.0"
   }
 }
