@@ -65,7 +65,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "PUBLIC_URL='https://brownstein.github.io' npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -145,6 +147,7 @@
     "@types/debounce": "^1.2.1",
     "@types/delaunator": "^5.0.0",
     "debounce": "^1.2.1",
-    "delaunator": "^5.0.0"
+    "delaunator": "^5.0.0",
+    "gh-pages": "^3.2.3"
   }
 }
