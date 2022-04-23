@@ -134,9 +134,10 @@ a.tile, a.tile:visited {
 .tile img {
   width: 100%;
   height: auto;
+  z-index: -2;
 }
 
-.tile span {
+.tile .label {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -146,6 +147,19 @@ a.tile, a.tile:visited {
   padding: 10px;
   color: white;
   font-size: 16pt;
+}
+
+.tile .description {
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  right: 20px;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 3px;
+  color: #fff;
+  overflow: hidden;
 }
 
 .tile h2 {
@@ -172,14 +186,14 @@ a.tile, a.tile:visited {
     overflow: visible;
   }
   h2::before {
-    content: '[';
+    content: '(';
     position: absolute;
     left: -32px;
     top: -13px;
     font-size: 30pt;
   }
   h2::after {
-    content: ']';
+    content: ')';
     position: absolute;
     right: -32px;
     top: -13px;

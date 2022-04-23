@@ -71,11 +71,14 @@ function App() {
         <div className='row'>
           <a className='tile big resume' href="Robert%20Brownstein%20Resume.pdf" target='_blank'>
             <img src={resumeThumbnail} />
-            <span>resume</span>
+            <span className='label'>resume</span>
           </a>
           <a className='tile big' href='https://brownstein.github.io/open-sourcerer-ts' target='_blank'>
             <img src={osThumbnail} />
-            <span>side project</span>
+            <div className='description'>
+              Open Sourcerer is a 2D platformer where the user learns JavaScript to defeat enemies and solve puzzles. Fully source-mapped and browser-first, it serves as a perfect demo of my frontend skillset.
+            </div>
+            <span className='label'>side project</span>
           </a>
         </div>
         { mobile ? null : <div className='row'>{tile1}{tile2}{tile3}</div> }
