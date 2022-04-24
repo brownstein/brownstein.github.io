@@ -1,6 +1,7 @@
 import debounce from 'debounce';
 import { useState, useEffect } from 'react';
 import { Background } from './Background';
+import { Bird } from './Birdify';
 import './App.css';
 import resumeThumbnail from './resume-thumbnail.png';
 import osThumbnail from './open-sourcerer.png';
@@ -8,8 +9,9 @@ import osThumbnail from './open-sourcerer.png';
 const MOBILE_CUTOFF = 900;
 
 function App() {
+  const [birdActive, setBirdActive] = useState<boolean>(false);
   const [mobile, setMobile] = useState<boolean>(window.innerWidth < MOBILE_CUTOFF);
-  const [bgColor, setBgColor] = useState<[number, number, number]>([0.5, 0.6, 0.7]);
+  const [bgColor, setBgColor] = useState<[number, number, number]>([0.9, 0.9, 0.9]);
   useEffect(() => {
     let active = true;
     function resize() {
@@ -26,7 +28,7 @@ function App() {
       ]);
       setTimeout(pulse, 10000);
     }
-    pulse();
+    setTimeout(pulse, 1000);
     const debouncedResize = debounce(resize, 200);
     window.addEventListener('resize', debouncedResize);
     return () => {
@@ -34,6 +36,17 @@ function App() {
       window.removeEventListener('resize', debouncedResize);
     };
   }, [setBgColor]);
+  useEffect(() => {
+    function activateBird() {
+      if (!birdActive) {
+        setBirdActive(true);
+      }
+    }
+    const birdTimeout = setTimeout(activateBird, 1000);
+    return () => {
+      clearTimeout(birdTimeout);
+    };
+  }, [setBirdActive, birdActive]);
   const colorTheme = (bgColor[0] + bgColor[1] * 2 + bgColor[2] * 0.5 > 1.5)
     ? 'light'
     : 'dark';
@@ -67,7 +80,7 @@ function App() {
     <div className={`app ${colorTheme}`}>
       <Background color={bgColor}/>
       <div className='content-box'>
-        <h1>Robert Brownstein</h1>
+        <h1>Robert Brownstein <Bird active={birdActive}/></h1>
         { mobile ? <div className='row'>{tile1}{tile2}</div> : null }
         <div className='row'>
           <a className='tile big resume' href="Robert%20Brownstein%20Resume.pdf" target='_blank'>
