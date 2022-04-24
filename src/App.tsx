@@ -42,7 +42,7 @@ function App() {
         setBirdActive(true);
       }
     }
-    const birdTimeout = setTimeout(activateBird, 1000);
+    const birdTimeout = setTimeout(activateBird, 1500);
     return () => {
       clearTimeout(birdTimeout);
     };
@@ -80,8 +80,15 @@ function App() {
     <div className={`app ${colorTheme}`}>
       <Background color={bgColor}/>
       <div className='content-box'>
-        <h1>Robert Brownstein <Bird active={birdActive}/></h1>
+        <h1>Robert Brownstein { mobile ? null : <Bird active={birdActive}/>}</h1>
         { mobile ? <div className='row'>{tile1}{tile2}</div> : null }
+        { mobile ? (
+          <div className='bird-row'>
+            <Bird active={birdActive}>{'{}'}</Bird>
+            <Bird active={birdActive}>{'()'}</Bird>
+            <Bird active={birdActive}>{'[]'}</Bird>
+          </div>
+        ) : null }
         <div className='row'>
           <a className='tile big resume' href="Robert%20Brownstein%20Resume.pdf" target='_blank'>
             <img src={resumeThumbnail} />

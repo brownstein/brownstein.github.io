@@ -3,22 +3,26 @@ import './Birdify.css';
 
 export interface IBirdProps {
   active: boolean;
+  children?: string;
 }
 
 export const Bird: FC<IBirdProps> = ({
-  active
+  active,
+  children
 }) => {
   const flightPath = useMemo(() => `flightpath-${Math.floor(Math.random() * 6) + 1}`, []);
 
-  const wrapperStyle: React.CSSProperties = {
-    zIndex: 50,
-    float: 'right'
-  };
+  let leftChar = '(';
+  let rightChar = ')';
+
+  if (children) {
+    [leftChar, rightChar] = children.split('');
+  }
 
   return (
-    <span style={wrapperStyle} className={`${active ? 'birdified' : 'bird-candidate'} with-paren ${flightPath}`}>
-      <span className='left wing'>(</span>
-      <span className='right wing'>)</span>
+    <span className={`bird ${active ? 'birdified' : 'bird-candidate'} with-paren ${flightPath}`}>
+      <span className='left wing'>{leftChar}</span>
+      <span className='right wing'>{rightChar}</span>
     </span>
   );
 };

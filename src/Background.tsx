@@ -87,6 +87,8 @@ export const Background: FC<IBackgroundProps> = ({
     let changeCounter = 0;
     let changeProgress = 0;
 
+    const v = 0.1;
+
     function seedPoints() {
       while (points.length < pointCount) {
         points.push({
@@ -95,9 +97,9 @@ export const Background: FC<IBackgroundProps> = ({
           vx: 0,
           vy: 0,
           color: [
-            Math.min(1, currentColor[0] + Math.random() * 0.1),
-            Math.min(1, currentColor[1] + Math.random() * 0.1),
-            Math.min(1, currentColor[2] + Math.random() * 0.1)
+            Math.min(1, currentColor[0] * 0.9 + Math.random() * v),
+            Math.min(1, currentColor[1] * 0.9 + Math.random() * v),
+            Math.min(1, currentColor[2] * 0.9 + Math.random() * v)
           ],
           changeCounter
         });
