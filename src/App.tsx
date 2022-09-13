@@ -64,6 +64,7 @@ function App() {
     <div className='tile borderless'>
       <h3>Employment</h3>
       <ul>
+        <li>2022 - Current: Boston Dynamics ( IC )</li>
         <li>2019 - 2022: Better ( IC )</li>
         <li>2016 - 2019: Social Tables ( IC / EM )</li>
         <li>Founded Goodapuss LLC in 2021</li>
