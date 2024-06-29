@@ -62,18 +62,17 @@ function App() {
   );
   const tile3 = (
     <div className='tile borderless'>
-      <h3>Employment</h3>
+      <h3>Recent Employment</h3>
       <ul>
-        <li>2022 - Current: Boston Dynamics ( IC )</li>
-        <li>2019 - 2022: Better ( IC )</li>
-        <li>2016 - 2019: Social Tables ( IC / EM )</li>
-        <li>Founded Goodapuss LLC in 2021</li>
+        <li>2022 - Current: <b>Boston Dynamics</b> ( IC )</li>
+        <li>2019 - 2022: <b>Better</b> ( IC )</li>
+        <li>2016 - 2019: <b>Social Tables</b> ( IC / EM )</li>
       </ul>
-      <h3>Open Source Projects</h3>
+      <h3>Open Source</h3>
       <ul>
+        <li><a href='https://brownstein.github.io/three-aseprite/' target='_blank'>Three-Aseprite</a></li>
         <li><a href='https://github.com/socialtables/openfpc' target='_blank'>OpenFPC</a></li>
         <li><a href='https://github.com/socialtables/saml-protocol' target='_blank'>SAML-Protocol</a></li>
-        <li><a href='http://brownstein.github.io/birdify/' target='_blank'>Birdify</a></li>
       </ul>
     </div>
   );
@@ -93,17 +92,17 @@ function App() {
         <div className='row'>
           <a className='tile big resume' href="Robert%20Brownstein%20Resume.pdf" target='_blank'>
             <img src={resumeThumbnail} />
-            <span className='label'>open resume</span>
+            <span className='label'>Download Resume Here.</span>
           </a>
           <a className='tile big' href='https://brownstein.github.io/open-sourcerer-ts' target='_blank'>
             <img src={osThumbnail} />
             <div className='description'>
-              Open Sourcerer is a 2D platformer in which the player learns JavaScript to defeat enemies and solve puzzles. Fully source-mapped, it serves as a perfect demo of my frontend skillset. Designed for desktop browsers.
+              Open Sourcerer is a 2D platformer in which the player learns JavaScript to defeat enemies and solve puzzles. Designed for desktop browsers.
             </div>
-            <span className='label'>play side project</span>
+            <span className='label'>Check out my Side Project Here.</span>
           </a>
         </div>
-        { mobile ? null : <div className='row'>{tile1}{tile2}{tile3}</div> }
+        { mobile ? null : <div className='flex-row'>{tile1}{tile2}{tile3}</div> }
         { mobile ? <div className='row'>{tile3}</div> : null }
       </div>
     </div>
