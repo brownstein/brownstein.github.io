@@ -12,29 +12,9 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Robert Brownstein</title>
-    <script id="2d-vertex-shader" type="x-shader/x-vertex">
-			attribute vec2 a_position;
-      attribute vec4 a_color;
-      varying vec4 v_color;
-			void main() {
-			    gl_Position = vec4(a_position, 0, 1);
-          v_color = a_color;
-			}
-		</script>
-		<script id="2d-fragment-shader" type="x-shader/x-fragment">
-      #ifdef GL_FRAGMENT_PRECISION_HIGH
-          precision highp float;
-      #else
-          precision mediump float;
-      #endif
-      varying vec4 v_color;
-      void main() {
-        gl_FragColor = v_color;
-      }
-		</script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app - it's 2022!.</noscript>
+    <noscript>You need to enable JavaScript to run this app - it's 2025!.</noscript>
     <div id="root"></div>
   </body>
 </html>
