@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="wrapper">
       <div className={`headline ${expanded ? "small" : "fullsize"}`}>
         <img
           className="header-img"
@@ -101,7 +101,7 @@ function App() {
           </a>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
