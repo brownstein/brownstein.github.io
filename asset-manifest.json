@@ -1,19 +1,17 @@
 {
   "files": {
-    "main.css": "https://brownstein.github.io/static/css/main.8ed75fc4.css",
-    "main.js": "https://brownstein.github.io/static/js/main.a379c3aa.js",
-    "static/media/resume-thumbnail.png": "https://brownstein.github.io/static/media/resume-thumbnail.b3c62eabc6b5d9c7730e.png",
+    "main.css": "https://brownstein.github.io/static/css/main.e58d3e5c.css",
+    "main.js": "https://brownstein.github.io/static/js/main.b9e76864.js",
+    "static/media/resume-thumbnail.png": "https://brownstein.github.io/static/media/resume-thumbnail.3b97ff154850cc59e09f.png",
     "static/media/compass-9-src.ttf": "https://brownstein.github.io/static/media/compass-9-src.788dc1975de358f0483c.ttf",
     "static/media/os-screenshot.jpg": "https://brownstein.github.io/static/media/os-screenshot.40018825eae7e78b2f3c.jpg",
-    "static/media/os-logo.png": "https://brownstein.github.io/static/media/os-logo.6bd1e4abac54dccc7ebd.png",
-    "static/media/link-solid.svg": "https://brownstein.github.io/static/media/link-solid.45d638f430dfe830abf2.svg",
     "static/media/file-pdf-solid.svg": "https://brownstein.github.io/static/media/file-pdf-solid.67fc6c3134cb73ce4fea.svg",
     "index.html": "https://brownstein.github.io/index.html",
-    "main.8ed75fc4.css.map": "https://brownstein.github.io/static/css/main.8ed75fc4.css.map",
-    "main.a379c3aa.js.map": "https://brownstein.github.io/static/js/main.a379c3aa.js.map"
+    "main.e58d3e5c.css.map": "https://brownstein.github.io/static/css/main.e58d3e5c.css.map",
+    "main.b9e76864.js.map": "https://brownstein.github.io/static/js/main.b9e76864.js.map"
   },
   "entrypoints": [
-    "static/css/main.8ed75fc4.css",
-    "static/js/main.a379c3aa.js"
+    "static/css/main.e58d3e5c.css",
+    "static/js/main.b9e76864.js"
   ]
 }
