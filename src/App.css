@@ -29,7 +29,15 @@ html, body {
 .headline {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
+}
+
+.headline .header-img {
+  image-rendering: pixelated;
+  width: 10vh;
+  aspect-ratio: 0.785;
 }
 
 .headline h1 {
@@ -69,7 +77,7 @@ html, body {
   align-items: center;
   color: var(--text-color);
   width: 16vw;
-  aspect-ratio: 1;
+  aspect-ratio: 0.8;
   position: relative;
   transition: color 250ms ease, width 250ms ease;
   position: relative;
@@ -125,7 +133,8 @@ a.link-large, .link-large a {
 
 a.link-resume .preview {
   mask-image: url("./file-pdf-solid.svg");
-  mask-size: contain;
+  mask-size: 50%;
+  mask-position: center;
   mask-repeat: no-repeat;
   background-image: url("./resume-thumbnail.png");
   background-size: cover;
@@ -138,8 +147,9 @@ a.link-resume .preview {
 }
 
 .link-game .preview {
-  mask-image: url("./protag.png");
+  mask-image: url("./os-logo.png");
   mask-size: contain;
+  mask-position: center;
   mask-repeat: no-repeat;
   background: #fff;
 }
@@ -154,7 +164,8 @@ a.link-resume .preview {
 
 .link-links .preview {
   mask-image: url("./link-solid.svg");
-  mask-size: contain;
+  mask-size: 50%;
+  mask-position: center;
   mask-repeat: no-repeat;
   background: #fff;
   transform: scale(80%);
@@ -174,11 +185,15 @@ a.link-resume .preview {
 }
 
 .link-large.expanded {
-  width: 33vw;
+  width: 50vw;
 }
 
 .link-large.expanded .link-content {
-  height: 32vh;
+  height: 45vh;
+}
+
+.link-content {
+  overflow-y: auto;
 }
 
 .link-content img {
@@ -188,6 +203,15 @@ a.link-resume .preview {
   border-top-right-radius: 3em;
   overflow: hidden;
   object-fit: cover;
+}
+
+.link-content ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1em;
 }
 
 .link-content p {
@@ -203,18 +227,6 @@ a.link-resume .preview {
   text-decoration: none;
 }
 
-.link-content ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-size: 24pt;
-}
-
 .link-links .link-content a {
   display: flex;
   flex-direction: column;
@@ -223,11 +235,6 @@ a.link-resume .preview {
 
 .link-links .link-content .link-headline {
   font-size: 1.2em;
-}
-
-.link-links .link-content .link-description {
-  font-size: 0.8em;
-  opacity: 0.6;
 }
 
 @media only screen 
@@ -255,7 +262,7 @@ a.link-resume .preview {
   }
   .link-large.expanded {
     width: 80vw;
-    height: 40vh;
+    height: 70vh;
   }
   .link-large .preview {
     max-height: 20vh;
