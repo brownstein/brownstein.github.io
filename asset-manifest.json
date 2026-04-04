@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "https://brownstein.github.io/static/css/main.c4b10f8e.css",
+    "main.css": "https://brownstein.github.io/static/css/main.a9c43958.css",
     "main.js": "https://brownstein.github.io/static/js/main.a9adeb9c.js",
     "static/media/resume-thumbnail.png": "https://brownstein.github.io/static/media/resume-thumbnail.b3c62eabc6b5d9c7730e.png",
     "static/media/compass-9-src.ttf": "https://brownstein.github.io/static/media/compass-9-src.788dc1975de358f0483c.ttf",
@@ -9,11 +9,11 @@
     "static/media/link-solid.svg": "https://brownstein.github.io/static/media/link-solid.45d638f430dfe830abf2.svg",
     "static/media/file-pdf-solid.svg": "https://brownstein.github.io/static/media/file-pdf-solid.67fc6c3134cb73ce4fea.svg",
     "index.html": "https://brownstein.github.io/index.html",
-    "main.c4b10f8e.css.map": "https://brownstein.github.io/static/css/main.c4b10f8e.css.map",
+    "main.a9c43958.css.map": "https://brownstein.github.io/static/css/main.a9c43958.css.map",
     "main.a9adeb9c.js.map": "https://brownstein.github.io/static/js/main.a9adeb9c.js.map"
   },
   "entrypoints": [
-    "static/css/main.c4b10f8e.css",
+    "static/css/main.a9c43958.css",
     "static/js/main.a9adeb9c.js"
   ]
 }
