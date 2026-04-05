@@ -1,106 +1,199 @@
-import { useState } from "react";
+import cx from "classnames";
+import { useCallback, useEffect, useRef, useState } from "react";
 import openSourcererImage from "./os-screenshot.jpg";
 import rbTransparentImage from "./rb-transparent-bg.png";
 
 import "./App.css";
 
-function App() {
-  const [expanded, setExpanded] = useState<"game" | "links" | null>(null);
+type Section = "about" | "game" | "links";
 
-  const toggle = (section: typeof expanded) => {
-    if (expanded === section) {
-      setExpanded(null);
-    } else {
-      setExpanded(section);
+function App() {
+  const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState<Section | null>(null);
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const gameRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    const about = aboutRef.current;
+    const game = gameRef.current;
+    const links = linksRef.current;
+
+    console.log(wrapper, game);
+
+    if (!wrapper || !about || !game || !links) return;
+
+    const ratios = new Map<Section, number>();
+
+    const updateExpanded = () => {
+      let bestSection: Section | null = null;
+      let bestSectionRatio = 0;
+      console.log(ratios);
+      for (const [section, ratio] of ratios) {
+        if (ratio >= bestSectionRatio) {
+          bestSection = section;
+          bestSectionRatio = ratio;
+        }
+      }
+      setExpanded(bestSection);
+    };
+
+    const monitor = (section: Section, el: HTMLDivElement) => {
+      const onUpdate: IntersectionObserverCallback = (entries) => {
+        for (const entry of entries) {
+          if (entry.target !== el) continue;
+          ratios.set(section, entry.intersectionRatio);
+          updateExpanded();
+        }
+      };
+      const observer = new IntersectionObserver(onUpdate, {
+        root: wrapper,
+        rootMargin: "0px",
+        threshold: [0, 0.1, 0.15, 0.25, 0.5, 1],
+      });
+      observer.observe(el);
+      return () => {
+        observer.disconnect();
+      };
+    };
+
+    const cleanupFuncs = [
+      monitor("about", about),
+      monitor("game", game),
+      monitor("links", links),
+    ];
+
+    const onScroll = () => {
+      setScrolled(wrapper.scrollTop > 0);
+      wrapper.style.setProperty("--page-scroll-top", `${wrapper.scrollTop}px`);
+    };
+
+    wrapper.addEventListener("scroll", onScroll);
+
+    return () => {
+      for (const func of cleanupFuncs) func();
+      wrapper.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const selectSection = useCallback((section: Section) => {
+    const wrapperEl = wrapperRef.current;
+    let sectionEl: HTMLDivElement | null = null;
+    switch (section) {
+      case "about":
+        sectionEl = aboutRef.current;
+        break;
+      case "game":
+        sectionEl = gameRef.current;
+        break;
+      case "links":
+        sectionEl = linksRef.current;
+        break;
+      default:
+        break;
     }
-  };
+    if (!wrapperEl || !sectionEl) return;
+    const sectionRect = sectionEl.getBoundingClientRect();
+    const sectionTop = sectionRect.top;
+    wrapperEl.scrollTo({
+      top: sectionTop,
+    });
+  }, []);
 
   return (
-    <div className="wrapper">
-      <div className={`headline ${expanded ? "small" : "fullsize"}`}>
-        <img
-          className="header-img"
-          src={rbTransparentImage}
-          alt="Pixel art image of myself holding a cat."
-        />
-        <h1>Robert Brownstein</h1>
-        <h2>( Software Engineer )</h2>
-      </div>
-      <div className="content">
-        <a
-          className="link-large link-resume"
-          href="Robert%20Brownstein%20Resume.pdf"
-          target="_blank"
-        >
-          <div className="preview" />
-          <div className="label">Resume</div>
-        </a>
-        <div
-          className={`link-large link-game ${
-            expanded === "game" ? "expanded" : "minimized"
-          }`}
-        >
-          <a className="preview" onClick={() => toggle("game")} />
-          <div className="link-content">
-            <img alt="Open Sourcerer logo" src={openSourcererImage} />
-            <p>
-              Open Sourcerer, developed by Gnarled Helix LLC, is a 2D platformer
-              in which the player learns JavaScript to control their spells.
-            </p>
-            <p>
-              I've been working on this game for a while with a team of 10, and
-              am excited to be launching in Q3 of 2026.
-            </p>
-            <p>
-              You can find more information{" "}
-              <a href="https://store.steampowered.com/app/4561260/Open_Sourcerer/?beta=0">
-                on Steam
-              </a>
-              .
-            </p>
+    <div className={cx("wrapper", { scrolled })} ref={wrapperRef}>
+      <header>
+        <div className="headline">
+          <img
+            className="header-img"
+            src={rbTransparentImage}
+            alt="Pixel art image of myself holding a cat."
+          />
+          <div className="headings">
+            <h1>Robert Brownstein</h1>
+            <h2>Software Engineer</h2>
           </div>
-          <a className="label" onClick={() => toggle("game")}>
-            Video Game
-          </a>
+        </div>
+        <div className="sections">
+          <div
+            className={cx("section-link", { expanded: expanded === "about" })}
+          ></div>
+        </div>
+      </header>
+      <main>
+        <div
+          className={cx("section", expanded === "about" ? "current" : null)}
+          ref={aboutRef}
+        >
+          <p>
+            I'm a passionate full stack engineer with a knack for performant UX
+            in the browser. I focus on the TypesScript ecosystem, with heavy
+            experience on the React, Three.js, and Express side.
+          </p>
+          <p>
+            Most recently at <b>Boston Dynamics</b>, I worked primarily on
+            Orbit, a web-based solution that controls Spot's behavior and
+            collects sensor data to allow customers to set up recurring
+            inspections to monitor industrial assets.
+          </p>
+          <div className="resume-wrapper">
+            <a
+              className="link-large link-resume"
+              href="Robert%20Brownstein%20Resume.pdf"
+              target="_blank"
+            >
+              <div className="preview" />
+              <div className="label">Here's my resume.</div>
+            </a>
+          </div>
         </div>
         <div
-          className={`link-large link-links ${
-            expanded === "links" ? "expanded" : "minimized"
-          }`}
+          className={cx("section", expanded === "game" ? "current" : null)}
+          ref={gameRef}
         >
-          <a className="preview" onClick={() => toggle("links")} />
-          <div className="link-content">
-            <ul>
-              <li>
-                <a
-                  className="link-headline"
-                  href="https://brownstein.github.io/protosprite"
-                >
-                  Protosprite
-                </a>
-                <p className="link-description">
-                  Protosprite is an open-source format and rendering package for
-                  sprites, the basic building block of renderable content in 2D
-                  games. It uses a compact, protobuf-based binary encoding to
-                  compress exports from the popular editing tool "Aseprite", and
-                  provides a three.js renderer.
-                </p>
-              </li>
-              <li>
-                <a className="link-headline" href="https://open-sourcerer.com">
-                  Open Sourcerer Website
-                </a>
-                <p className="link-description">
-                  Learn more about my game and the team behind it.
-                </p>
-              </li>
-            </ul>
+          <p>I've also been working on a video game in my spare time.</p>
+          <div className="screenshot-wrapper">
+            <img
+              className="os-screenshot"
+              alt="A screenshot of my video game, Open Sourcerer."
+              src={openSourcererImage}
+            />
           </div>
-          <a className="label" onClick={() => toggle("links")}>
-            Links
-          </a>
+          <p>
+            <a href="https://open-sourcerer.com">Open Sourcerer</a> is an
+            educational 2D platformer where players learn JavaScript and use it
+            to solve puzzles and defeat enemies. Together with a small team at
+            my LLC, Gnarled Helix LLC, I've built this game and its engine from
+            the ground up to provide an experience that is half IDE, half action
+            platformer.
+          </p>
+          <p>
+            You can find it on Steam{" "}
+            <a href="https://store.steampowered.com/app/4561260/Open_Sourcerer/">
+              here
+            </a>
+            . Wishlist today!
+          </p>
         </div>
-      </div>
+        <div
+          className={cx("section", expanded === "links" ? "current" : null)}
+          ref={linksRef}
+        >
+          <p>
+            Like many engineers, I rely on open source software and try to
+            contribute back to the ecosystem.
+          </p>
+          <p>
+            <a href="https://brownstein.github.io/protosprite">Protosprite</a>{" "}
+            is one such contribution, which provides a compact protobuf-based
+            binary encoding format for 2D sprites and a related rendering
+            package for Three.js.
+          </p>
+        </div>
+      </main>
     </div>
   );
 }
