@@ -22,8 +22,6 @@ function App() {
     const game = gameRef.current;
     const links = linksRef.current;
 
-    console.log(wrapper, game);
-
     if (!wrapper || !about || !game || !links) return;
 
     const ratios = new Map<Section, number>();
@@ -31,7 +29,6 @@ function App() {
     const updateExpanded = () => {
       let bestSection: Section | null = null;
       let bestSectionRatio = 0;
-      console.log(ratios);
       for (const [section, ratio] of ratios) {
         if (ratio >= bestSectionRatio) {
           bestSection = section;
