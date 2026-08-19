@@ -64,11 +64,15 @@ function App() {
     ];
 
     const onScroll = () => {
-      setScrolled(wrapper.scrollTop > 0);
-      wrapper.style.setProperty("--page-scroll-top", `${wrapper.scrollTop}px`);
+      const { scrollTop } = wrapper;
+      setScrolled(scrollTop > 0);
+      // Unitless on purpose — App.css derives both the length and the rotation
+      // angle from this by multiplication. See the note by @property there.
+      wrapper.style.setProperty("--page-scroll", `${scrollTop}`);
     };
 
     wrapper.addEventListener("scroll", onScroll);
+    onScroll();
 
     return () => {
       for (const func of cleanupFuncs) func();

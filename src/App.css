@@ -20,6 +20,10 @@ html, body {
   font-family: "Compass";
   gap: 4vw;
 
+  /* Scroll distance, in px, over which the header image makes one full turn.
+     133.33333px is 100pt — the value this effect was originally tuned to. */
+  --header-spin-distance: 133.33333;
+
   --text-color: #ffffff;
   --highlight-color: #66ccff;
   --link-color: var(--highlight-color);
@@ -32,13 +36,25 @@ a {
   text-decoration: none;
 }
 
-@property --page-scroll-top {
-  syntax: "<length>";
+/* The scroll position is published as a unitless number, and every length or
+   angle derived from it is built by multiplying that number. Firefox does not
+   implement dividing a <length> by a <length> in calc(), so nothing here may
+   reduce two lengths to a ratio. */
+@property --page-scroll {
+  syntax: "<number>";
   inherits: true;
   initial-value: 0;
 }
 
+@property --page-scroll-top {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
 .wrapper {
+  --page-scroll-top: calc(var(--page-scroll) * 1px);
+
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -93,7 +109,9 @@ header .headline .header-img {
   aspect-ratio: auto;
   max-width: 20vw;
   max-height: max(64pt, calc(20vh - var(--page-scroll-top)));
-  transform: rotateZ(min(360deg, calc(360deg * var(--page-scroll-top) / 100pt)))
+  transform: rotateZ(
+    min(360deg, calc(360deg * var(--page-scroll) / var(--header-spin-distance)))
+  );
 }
 
 header .headline .headings {
