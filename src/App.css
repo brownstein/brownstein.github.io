@@ -195,7 +195,7 @@ main .section.current {
   justify-content: center;
 }
 
-.os-screenshot {
+.screenshot {
   width: 80%;
   border-radius: 1em 0 1em 0;
   align-self: center;

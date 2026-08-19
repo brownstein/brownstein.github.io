@@ -1,6 +1,7 @@
 import cx from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
 import openSourcererImage from "./os-screenshot.jpg";
+import tauricImage from "./tauric-screenshot.jpg";
 import rbTransparentImage from "./rb-transparent-bg.png";
 
 import "./App.css";
@@ -135,7 +136,7 @@ function App() {
             experience on the React, Three.js, and Express side.
           </p>
           <p>
-            Most recently at <b>Boston Dynamics</b>, I worked primarily on
+            Recently at <b>Boston Dynamics</b>, I worked primarily on
             Orbit, a web-based solution that controls Spot's behavior and
             collects sensor data to allow customers to set up recurring
             inspections to monitor industrial assets.
@@ -160,13 +161,10 @@ function App() {
           className={cx("section", expanded === "game" ? "current" : null)}
           ref={gameRef}
         >
-          <p>
-            The studio has three things in flight, and I've had a hand in all
-            of them.
-          </p>
+          <p>More importantly, I'm running an indie game studio.</p>
           <div className="screenshot-wrapper">
             <img
-              className="os-screenshot"
+              className="screenshot"
               alt="A screenshot of my video game, Open Sourcerer."
               src={openSourcererImage}
             />
@@ -205,6 +203,13 @@ function App() {
             each other's edits as they happen, with no export and re-import in
             between. It's live at <a href="https://tauric.tools/">tauric.tools</a>.
           </p>
+          <div className="screenshot-wrapper">
+            <img
+              className="screenshot"
+              alt="A screenshot of Tauric Studio: an entity palette on the left, a tiled level on the canvas, and inspector and layer panels on the right."
+              src={tauricImage}
+            />
+          </div>
           <p>
             I wrote up why we changed direction, and what we took from the
             engine, in{" "}
