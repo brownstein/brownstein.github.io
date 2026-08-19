@@ -159,7 +159,10 @@ function App() {
           className={cx("section", expanded === "game" ? "current" : null)}
           ref={gameRef}
         >
-          <p>I've also been working on a video game in my spare time.</p>
+          <p>
+            The studio has three things in flight, and I've had a hand in all
+            of them.
+          </p>
           <div className="screenshot-wrapper">
             <img
               className="os-screenshot"
@@ -171,9 +174,12 @@ function App() {
             <a href="https://open-sourcerer.com">Open Sourcerer</a> is an
             educational 2D platformer where players learn JavaScript and use it
             to solve puzzles and defeat enemies. Together with a small team at
-            my LLC, Gnarled Helix LLC, I've built this game and its engine from
-            the ground up to provide an experience that is half IDE, half action
-            platformer.
+            my LLC, <a href="https://gnarledhelix.com/">Gnarled Helix LLC</a>,
+            I've built this game and its engine from the ground up to provide an
+            experience that is half IDE, half action platformer. Its{" "}
+            <a href="https://gnarledhelix.com/open-sourcerer/">product page</a>{" "}
+            runs the real engine in the browser, so you can write a spell
+            without installing anything.
           </p>
           <p>
             You can find it on Steam{" "}
@@ -181,6 +187,31 @@ function App() {
               here
             </a>
             . Wishlist today!
+          </p>
+          <p>
+            <a href="https://gnarledhelix.com/factory-chess/">Factory Chess</a>{" "}
+            is the other game. It's chess on the usual sixty-four squares,
+            except the board is also a working factory: captured pieces leave
+            scrap where they died, and you lay belt to haul it back into new
+            pieces. It's a prototype and we're still testing it — you can{" "}
+            <a href="https://factorychess.com/">play it in your browser</a> and
+            tell us what breaks.
+          </p>
+          <p>
+            <a href="https://gnarledhelix.com/tauric-studio/">Tauric Studio</a>{" "}
+            is the tool side of the studio: a 2D level editor that runs in the
+            browser, where artists and designers open the same level and see
+            each other's edits as they happen, with no export and re-import in
+            between. It's live at <a href="https://tauric.tools/">tauric.tools</a>.
+          </p>
+          <p>
+            I wrote up why we changed direction, and what we took from the
+            engine, in{" "}
+            <a href="https://gnarledhelix.com/blog/one-pivot-twelve-days/">
+              One pivot, twelve days
+            </a>{" "}
+            on{" "}
+            <a href="https://gnarledhelix.com/blog/">our engineering blog</a>.
           </p>
         </div>
         <div
@@ -195,7 +226,25 @@ function App() {
             <a href="https://brownstein.github.io/protosprite">Protosprite</a>{" "}
             is one such contribution, which provides a compact protobuf-based
             binary encoding format for 2D sprites and a related rendering
-            package for Three.js.
+            package for Three.js. The{" "}
+            <a href="https://github.com/brownstein/protosprite">
+              source is on GitHub
+            </a>
+            , and the renderer ships as{" "}
+            <a href="https://www.npmjs.com/package/protosprite-three">
+              protosprite-three
+            </a>
+            .
+          </p>
+          <p>
+            <a href="https://www.npmjs.com/package/three-aseprite">
+              three-aseprite
+            </a>{" "}
+            is the other package I maintain. It draws Aseprite's own JSON sprite
+            sheets as Three.js meshes, so an animation goes from the editor into
+            a scene without a conversion step in between. There's{" "}
+            <a href="https://brownstein.github.io/three-aseprite">a demo</a>.
+            Both packages are MIT.
           </p>
         </div>
       </main>
