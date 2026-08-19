@@ -1,6 +1,7 @@
 import cx from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
 import openSourcererImage from "./os-screenshot.jpg";
+import tauricImage from "./tauric-screenshot.jpg";
 import rbTransparentImage from "./rb-transparent-bg.png";
 
 import "./App.css";
@@ -22,8 +23,6 @@ function App() {
     const game = gameRef.current;
     const links = linksRef.current;
 
-    console.log(wrapper, game);
-
     if (!wrapper || !about || !game || !links) return;
 
     const ratios = new Map<Section, number>();
@@ -31,7 +30,6 @@ function App() {
     const updateExpanded = () => {
       let bestSection: Section | null = null;
       let bestSectionRatio = 0;
-      console.log(ratios);
       for (const [section, ratio] of ratios) {
         if (ratio >= bestSectionRatio) {
           bestSection = section;
@@ -67,11 +65,15 @@ function App() {
     ];
 
     const onScroll = () => {
-      setScrolled(wrapper.scrollTop > 0);
-      wrapper.style.setProperty("--page-scroll-top", `${wrapper.scrollTop}px`);
+      const { scrollTop } = wrapper;
+      setScrolled(scrollTop > 0);
+      // Unitless on purpose — App.css derives both the length and the rotation
+      // angle from this by multiplication. See the note by @property there.
+      wrapper.style.setProperty("--page-scroll", `${scrollTop}`);
     };
 
     wrapper.addEventListener("scroll", onScroll);
+    onScroll();
 
     return () => {
       for (const func of cleanupFuncs) func();
@@ -130,14 +132,19 @@ function App() {
         >
           <p>
             I'm a passionate full stack engineer with a knack for performant UX
-            in the browser. I focus on the TypesScript ecosystem, with heavy
+            in the browser. I focus on the TypeScript ecosystem, with heavy
             experience on the React, Three.js, and Express side.
           </p>
           <p>
-            Most recently at <b>Boston Dynamics</b>, I worked primarily on
+            Recently at <b>Boston Dynamics</b>, I worked primarily on
             Orbit, a web-based solution that controls Spot's behavior and
             collects sensor data to allow customers to set up recurring
             inspections to monitor industrial assets.
+          </p>
+          <p>
+            These days I run <a href="https://gnarledhelix.com/">Gnarled Helix</a>,
+            a small remote-first game studio, with{" "}
+            <a href="https://gnarledhelix.com/team/">a team of four</a>.
           </p>
           <div className="resume-wrapper">
             <a
@@ -154,10 +161,10 @@ function App() {
           className={cx("section", expanded === "game" ? "current" : null)}
           ref={gameRef}
         >
-          <p>I've also been working on a video game in my spare time.</p>
+          <p>More importantly, I'm running an indie game studio.</p>
           <div className="screenshot-wrapper">
             <img
-              className="os-screenshot"
+              className="screenshot"
               alt="A screenshot of my video game, Open Sourcerer."
               src={openSourcererImage}
             />
@@ -166,9 +173,12 @@ function App() {
             <a href="https://open-sourcerer.com">Open Sourcerer</a> is an
             educational 2D platformer where players learn JavaScript and use it
             to solve puzzles and defeat enemies. Together with a small team at
-            my LLC, Gnarled Helix LLC, I've built this game and its engine from
-            the ground up to provide an experience that is half IDE, half action
-            platformer.
+            my LLC, <a href="https://gnarledhelix.com/">Gnarled Helix LLC</a>,
+            I've built this game and its engine from the ground up to provide an
+            experience that is half IDE, half action platformer. Its{" "}
+            <a href="https://gnarledhelix.com/open-sourcerer/">product page</a>{" "}
+            runs the real engine in the browser, so you can write a spell
+            without installing anything.
           </p>
           <p>
             You can find it on Steam{" "}
@@ -176,6 +186,38 @@ function App() {
               here
             </a>
             . Wishlist today!
+          </p>
+          <p>
+            <a href="https://gnarledhelix.com/factory-chess/">Factory Chess</a>{" "}
+            is the other game. It's chess on the usual sixty-four squares,
+            except the board is also a working factory: captured pieces leave
+            scrap where they died, and you lay belt to haul it back into new
+            pieces. It's a prototype and we're still testing it — you can{" "}
+            <a href="https://factorychess.com/">play it in your browser</a> and
+            tell us what breaks.
+          </p>
+          <p>
+            <a href="https://gnarledhelix.com/tauric-studio/">Tauric Studio</a>{" "}
+            is the tool side of the studio: a 2D level editor that runs in the
+            browser, where artists and designers open the same level and see
+            each other's edits as they happen, with no export and re-import in
+            between. It's live at <a href="https://tauric.tools/">tauric.tools</a>.
+          </p>
+          <div className="screenshot-wrapper">
+            <img
+              className="screenshot"
+              alt="A screenshot of Tauric Studio: an entity palette on the left, a tiled level on the canvas, and inspector and layer panels on the right."
+              src={tauricImage}
+            />
+          </div>
+          <p>
+            I wrote up why we changed direction, and what we took from the
+            engine, in{" "}
+            <a href="https://gnarledhelix.com/blog/one-pivot-twelve-days/">
+              One pivot, twelve days
+            </a>{" "}
+            on{" "}
+            <a href="https://gnarledhelix.com/blog/">our engineering blog</a>.
           </p>
         </div>
         <div
@@ -190,7 +232,25 @@ function App() {
             <a href="https://brownstein.github.io/protosprite">Protosprite</a>{" "}
             is one such contribution, which provides a compact protobuf-based
             binary encoding format for 2D sprites and a related rendering
-            package for Three.js.
+            package for Three.js. The{" "}
+            <a href="https://github.com/brownstein/protosprite">
+              source is on GitHub
+            </a>
+            , and the renderer ships as{" "}
+            <a href="https://www.npmjs.com/package/protosprite-three">
+              protosprite-three
+            </a>
+            .
+          </p>
+          <p>
+            <a href="https://www.npmjs.com/package/three-aseprite">
+              three-aseprite
+            </a>{" "}
+            is the other package I maintain. It draws Aseprite's own JSON sprite
+            sheets as Three.js meshes, so an animation goes from the editor into
+            a scene without a conversion step in between. There's{" "}
+            <a href="https://brownstein.github.io/three-aseprite">a demo</a>.
+            Both packages are MIT.
           </p>
         </div>
       </main>
