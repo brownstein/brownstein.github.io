@@ -130,7 +130,7 @@ function App() {
         >
           <p>
             I'm a passionate full stack engineer with a knack for performant UX
-            in the browser. I focus on the TypesScript ecosystem, with heavy
+            in the browser. I focus on the TypeScript ecosystem, with heavy
             experience on the React, Three.js, and Express side.
           </p>
           <p>
@@ -138,6 +138,11 @@ function App() {
             Orbit, a web-based solution that controls Spot's behavior and
             collects sensor data to allow customers to set up recurring
             inspections to monitor industrial assets.
+          </p>
+          <p>
+            These days I run <a href="https://gnarledhelix.com/">Gnarled Helix</a>,
+            a small remote-first game studio, with{" "}
+            <a href="https://gnarledhelix.com/team/">a team of four</a>.
           </p>
           <div className="resume-wrapper">
             <a
