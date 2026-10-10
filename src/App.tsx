@@ -132,19 +132,24 @@ function App() {
         >
           <p>
             I'm a passionate full stack engineer with a knack for performant UX
-            in the browser. I focus on the TypeScript ecosystem, with heavy
-            experience on the React, Three.js, and Express side.
+            in DOM-centric environments (browsers / Electron). I focus on the
+            TypeScript ecosystem, with heavy experience on the React, Three.js,
+            and Express side. I also work in C++ and Python.
           </p>
           <p>
-            Recently at <b>Boston Dynamics</b>, I worked primarily on
-            Orbit, a web-based solution that controls Spot's behavior and
-            collects sensor data to allow customers to set up recurring
-            inspections to monitor industrial assets.
+            Recently at <b>Boston Dynamics</b>, I worked primarily on Orbit, a
+            web-based solution that controls Spot's behavior and collects sensor
+            data to allow customers to set up recurring inspections to monitor
+            industrial assets.
           </p>
           <p>
-            These days I run <a href="https://gnarledhelix.com/">Gnarled Helix</a>,
-            a small remote-first game studio, with{" "}
-            <a href="https://gnarledhelix.com/team/">a team of four</a>.
+            These days I run{" "}
+            <a href="https://gnarledhelix.com/">Gnarled Helix</a>, a small
+            remote-first game studio, along with{" "}
+            <a href="https://gnarledhelix.com/team/">
+              a talented core team and their direct reports
+            </a>
+            .
           </p>
           <div className="resume-wrapper">
             <a
@@ -161,7 +166,7 @@ function App() {
           className={cx("section", expanded === "game" ? "current" : null)}
           ref={gameRef}
         >
-          <p>More importantly, I'm running an indie game studio.</p>
+          <p>I recently open-sourced a failed game after 5+ years of work.</p>
           <div className="screenshot-wrapper">
             <img
               className="screenshot"
@@ -170,27 +175,25 @@ function App() {
             />
           </div>
           <p>
-            <a href="https://open-sourcerer.com">Open Sourcerer</a> is an
-            educational 2D platformer where players learn JavaScript and use it
-            to solve puzzles and defeat enemies. Together with a small team at
-            my LLC, <a href="https://gnarledhelix.com/">Gnarled Helix LLC</a>,
-            I've built this game and its engine from the ground up to provide an
-            experience that is half IDE, half action platformer. Its{" "}
-            <a href="https://gnarledhelix.com/open-sourcerer/">product page</a>{" "}
-            runs the real engine in the browser, so you can write a spell
-            without installing anything.
+            <a href="https://open-sourcerer.com">Open Sourcerer</a> was intended
+            as an educational 2D platformer where players learned JavaScript and
+            use it to solve puzzles and defeat enemies. We built a product on
+            the untested assumption that we were capable of teaching CompSci
+            without direct human interaction. That, and a series of other
+            mistakes, lead to a series of great learning experiences that I'd be
+            happy to tell you about over a beer.
           </p>
           <p>
             You can find it on Steam{" "}
             <a href="https://store.steampowered.com/app/4561260/Open_Sourcerer/">
-              here
+              here.
             </a>
-            . Wishlist today!
           </p>
           <p>
+            We're also working on a different game with a different set of
+            assumptions -
             <a href="https://gnarledhelix.com/factory-chess/">Factory Chess</a>{" "}
-            is the other game. It's chess on the usual sixty-four squares,
-            except the board is also a working factory: captured pieces leave
+            is chess with factory / recycling mechanids. Captured pieces leave
             scrap where they died, and you lay belt to haul it back into new
             pieces. It's a prototype and we're still testing it — you can{" "}
             <a href="https://factorychess.com/">play it in your browser</a> and
@@ -201,23 +204,8 @@ function App() {
             is the tool side of the studio: a 2D level editor that runs in the
             browser, where artists and designers open the same level and see
             each other's edits as they happen, with no export and re-import in
-            between. It's live at <a href="https://tauric.tools/">tauric.tools</a>.
-          </p>
-          <div className="screenshot-wrapper">
-            <img
-              className="screenshot"
-              alt="A screenshot of Tauric Studio: an entity palette on the left, a tiled level on the canvas, and inspector and layer panels on the right."
-              src={tauricImage}
-            />
-          </div>
-          <p>
-            I wrote up why we changed direction, and what we took from the
-            engine, in{" "}
-            <a href="https://gnarledhelix.com/blog/one-pivot-twelve-days/">
-              One pivot, twelve days
-            </a>{" "}
-            on{" "}
-            <a href="https://gnarledhelix.com/blog/">our engineering blog</a>.
+            between. It's live at{" "}
+            <a href="https://tauric.tools/">tauric.tools</a>.
           </p>
         </div>
         <div
